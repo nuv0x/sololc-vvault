@@ -1,0 +1,30 @@
+[project]
+name = "sololc-vvault"
+version = "0.1.0"
+description = "vlt - Minimalist Secure Vault (Vvault CLI)"
+readme = "README.md"
+authors = [
+    { name = "Josh Klein", email = "gigacoderx@gmail.com" }
+]
+requires-python = ">=3.11.15"
+dependencies = [
+    "cryptography>=46.0.7",
+    "opencv-python>=4.13.0.92",
+    "pillow>=12.2.0",
+    "pyotp>=2.9.0",
+    "pyperclip>=1.11.0",
+    "python-dotenv>=1.2.2",
+    "pyyaml>=6.0.3",
+    "qrcode>=8.2",
+    "rich>=14.3.3",
+    "typer>=0.24.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+vlt = "vvault:app"  # Key: Map the vlt command to your program
+
+

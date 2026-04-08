@@ -14,7 +14,7 @@
 
 ## 🚀 Installation
 
-Ensure you have **Python 3.12+** installed. We recommend using [uv](https://github.com/astral-sh/uv) for the fastest installation and performance.
+Ensure you have **Python 3.11+** installed. We recommend using [uv](https://github.com/astral-sh/uv) for the fastest installation and performance.
 
 ```bash
 # Clone the repository
