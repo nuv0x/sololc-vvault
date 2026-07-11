@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  run-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,12 +17,12 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v5
         with:
-          enable-cache: true # 👈 自动缓存依赖，下次跑测试秒级完成
+          enable-cache: true 
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version-file: "pyproject.toml" # 👈 自动读取你 pyproject.toml 里的 python 版本
+          python-version-file: "pyproject.toml"
 
       - name: Install dependencies
         run: uv sync --all-extras --dev
