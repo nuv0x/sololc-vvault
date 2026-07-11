@@ -1,6 +1,6 @@
 [project]
 name = "sololc-vvault"
-version = "0.2.0"
+version = "0.2.1"
 description = "vlt - Minimalist Secure Vault (Sololc-vvault CLI)"
 readme = "README.md"
 license = { text = "BSD-3-Clause" }
@@ -14,6 +14,7 @@ authors = [
 ]
 requires-python = ">=3.11"
 dependencies = [
+    "click>=8.0.0",
     "cryptography>=46.0.7",
     "pyotp>=2.9.0",
     "pyperclip>=1.11.0",
