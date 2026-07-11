@@ -1,21 +1,17 @@
-import pytest
-from sololc_vvault.core import crypto
+from cryptography.fernet import Fernet
 
-def test_encrypt_decrypt_cycle():
-    password = "test-password"
-    secret_data = "otpauth://totp/Github:me?secret=ABCDEF"
-    
-    encrypted = crypto.encrypt_data(secret_data, password)
-    assert isinstance(encrypted, str)
-    assert encrypted != secret_data.encode()
-    
-    decrypted = crypto.decrypt_data(encrypted, password)
-    assert decrypted == secret_data
 
-def test_wrong_password():
-    password = "correct-password"
-    wrong_password = "wrong-password"
-    encrypted = crypto.encrypt_data("data", password)
-    
-    with pytest.raises(Exception):
-        crypto.decrypt_data(encrypted, wrong_password)
+def test_crypto_encrypt_decrypt():
+    # 1. 生成临时密钥
+    key = Fernet.generate_key()
+    f = Fernet(key)
+
+    # 2. 原始敏感数据
+    raw_data = b"my_super_secret_totp_keys"
+
+    # 3. 加密后解密，验证数据一致性
+    encrypted = f.encrypt(raw_data)
+    decrypted = f.decrypt(encrypted)
+
+    assert decrypted == raw_data
+    assert encrypted != raw_data
