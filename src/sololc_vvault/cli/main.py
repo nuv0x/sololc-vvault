@@ -6,6 +6,7 @@ import sys
 import time
 from datetime import datetime
 from importlib.metadata import PackageNotFoundError, version
+from pathlib import Path
 from typing import Annotated, Optional
 
 import click
@@ -23,8 +24,8 @@ from rich.table import Table
 console = Console()
 
 # Database storage path
-DB_PATH = os.path.expanduser("~/.vlt/sololc-vvault.db")
-BACKUP_DIR = os.path.expanduser("~/vlt/backups")
+DB_PATH = Path("~/.vlt/sololc-vvault.db").expanduser()
+BACKUP_DIR = Path("~/vlt/backups").expanduser()
 
 try:
     __version__ = version("sololc-vvault")
@@ -510,6 +511,7 @@ def init(
     console.print(
         "[dim]─────────────────────────────────────────────────────────────[/]\n"
     )
+    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
     # Guard: Prevent double initialization
     if os.path.exists(DB_PATH):
@@ -895,6 +897,7 @@ def backup_vault(
         if destination:
             target_dir = os.path.abspath(os.path.expanduser(destination))
         else:
+            BACKUP_DIR.parent.mkdir(parents=True, exist_ok=True)
             target_dir = BACKUP_DIR
 
         # Create the directory tree if it doesn't exist
