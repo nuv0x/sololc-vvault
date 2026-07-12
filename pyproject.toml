@@ -1,6 +1,6 @@
 [project]
 name = "sololc-vvault"
-version = "0.2.1"
+version = "0.2.2"
 description = "vlt - Minimalist Secure Vault (Sololc-vvault CLI)"
 readme = "README.md"
 license = { text = "BSD-3-Clause" }

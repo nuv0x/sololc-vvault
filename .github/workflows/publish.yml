@@ -2,7 +2,7 @@ name: Publish to PyPI
 
 on:
   release:
-    types: [published] # 当在 GitHub 创建 Release 时触发
+    types: [published]
 
 jobs:
   deploy:
